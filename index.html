@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Overlock+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Diphylleia&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            background-color:rgb(45, 107, 131);
+        }
+
+        body {
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            border: 6px double black;
+            margin: 0;
+            box-sizing: border-box;
+            background-color: #b1ababb2;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 20px;
+            text-align: right;
+        }
+
+        h1 {
+            font-family: 'Overlock SC', cursive;
+            font-size: 70px;
+            text-align: center;
+            color: rgb(45, 107, 131);
+        }
+
+        h2 {
+            font-family: 'Diphylleia', cursive;
+            font-size: 28px;
+            text-align: center;
+            color: rgb(45, 107, 131);
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            right: 20px;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgb(45, 107, 131);
+            display: flex;
+            justify-content: space-around;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+
+        .nav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav a:hover {
+            background-color: #f2f2f2;
+            color: rgb(45, 107, 131);
+        }
+
+        .nav a.active {
+            background-color: #f2f2f2;
+            color: rgb(45, 107, 131);
+        }
+
+        .nav .icon {
+            display: none;
+        }
+
+        @media screen and (max-width: 400px) {
+            .nav a:not(:first-child) {
+                display: none;
+            }
+
+            .nav a.icon {
+                float: right;
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .nav.responsive {
+                position: relative;
+            }
+
+            .nav.responsive a.icon {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            .nav.responsive a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 3px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgb(45, 107, 131);
+            color: #fff;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        input, button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: rgb(45, 107, 131);
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #fff;
+            color: rgb(45, 107, 131);
+        }
+
+        #message {
+            margin-top: 10px;
+            font-size: 16px;
+            color: green;
+        }
+    </style>
+    <script>
+        function myButton() {
+            alert("Button Clicked!");
+        }
+
+        function myFunction() {
+            var x = document.getElementById("navbar");
+            if (x.className === "nav") {
+                x.className += " responsive";
+            } else {
+                x.className = "nav";
+            }
+        }
+
+        function submitForm() {
+
+            var form = document.getElementById("myForm");
+
+            var formData = new FormData(form);
+
+            var firstName = formData.get("fname");
+            var lastName = formData.get("lname");
+            var phoneNumber = formData.get("Phone");
+            var email = formData.get("Email");
+
+            var message = "Name: " + firstName + " " + lastName +
+                "\nPhone: " + phoneNumber +
+                "\nEmail: " + email;
+
+            console.log(message);
+
+            document.getElementById("message").innerText = "Form submitted successfully!";
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>PORTFOLIO</h1>
+
+        <div class="nav" id="navbar" >
+            <a href="#homescreen" class="active">Home</a>
+            <a href="#edu">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#cnw">Clubs and Workshops</a>
+            <a href="#projs">Projects</a>
+            <a href="#contact">Information</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="material-icons">menu</i></a>
+        </div>
+
+        <div align="center" id="homescreen">
+            <h2>PERSONAL INFORMATION</h2>
+            <img src="C:\Users\LENOVO\Downloads\img4.jpg"  width="200" height="250">
+            <p>Name: Anannya S</p>
+            <p>Email: sanannya.btech23@rvu.edu.in</p>
+            <p>Phone: 9*********</p>
+        </div>
+        <hr><hr>
+        <div align="center" id="edu">
+            <table>
+                <h2>EDUCATION</h2>
+                <tr>
+                    <th>Education</th>
+                    <th>Institution passed out</th>
+                    <th>Pass year</th>
+                </tr>
+                <tr>
+                    <td>B.Tech (Hons)</td>
+                    <td><p>RV University</p></td>
+                    <td><p>May 2021</p></td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td><p>RV PU College Jayanagar</p></td>
+                    <td><p>April 2019</p></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td><p>RV School, Bangalore</p></td>
+                    <td><p>April 2017</p></td>
+                </tr>
+            </table>
+        </div>
+
+        <hr><hr>
+        <div id="skills">
+            <h2>SKILLS</h2>
+            <table>
+                <tr>
+                    <th>Programming</th>
+                    <td><p>Java, Python</p></td>
+                </tr>
+                <tr>
+                    <th>Web Development</th>
+                    <td> <p>HTML, CSS, JavaScript</p></td>
+                </tr>
+                <tr>
+                    <th>Database Management</th>
+                    <td><p>SQL</p></td>
+                </tr>
+            </table>
+        </div>
+
+        <hr><hr>
+        <div align="center" id="cnw">
+            <h2>CLUBS AND WORKSHOPS</h2>
+            <p>
+                I have been actively participating in a few clubs called 'Athleta' and 'Cybersec'.<br>
+                 Athleta is a vibrant sports club, fostering a sense of camaraderie and fitness. <br>
+                 In Cybersec, we delve into the realm of ethical hacking, honing our skills as white hat hackers.<br>
+                 Alongside, I've engaged in numerous university workshops like Structured Innovation, sparking creativity and entrepreneurial thinking.<br>
+                 The cybersecurity workshop provided valuable insights into internet safety. These experiences have not only broadened my perspective but also equipped me with practical skills essential for both personal and professional growth.<br>
+
+            </p>
+        </div>
+        <hr><hr>
+        <div align="center" id="projs">
+            <h2>PROJECTS</h2>
+            <p>
+                These are some screenshots of websites and data analyses that I have been working on recently.
+                <img src="C:\Users\LENOVO\Pictures\Screenshots\img1.png" alt="Project 1" width="700" height="400">
+                <img src="C:\Users\LENOVO\Pictures\Screenshots\img2.png" alt="Project 2" width="700" height="400">
+                <img src="C:\Users\LENOVO\Pictures\Screenshots\img3.png" alt="Project 3" width="500" height="400">
+            </p>
+        </div>
+        <hr><hr>
+        <div align="center" id="contact">
+            <h2>INFORMATION</h2>
+            <form id="myForm">
+                <fieldset>
+                    <legend>Information</legend><br>
+                    Name:
+                    <input type="text" name="fname" placeholder="Your first name" required><br><br>
+                    Surname:
+                    <input type="text" name="lname" placeholder="Your last name" required><br><br>
+                    Phone number:
+                    <input type="text" name="Phone" placeholder="Your Phone number" required><br><br>
+                    Email ID:
+                    <input type="text" name="Email" placeholder="Your Email id" required><br>
+                    <button type="button" onclick="submitForm()">Submit</button>
+                    <input type="reset" name="Reset">
+                    <p id="message"></p>
+                </fieldset>
+            </form>
+        </div>
+        <h3>&copy; Copyrights 2024 Anannya S</h3>
+    </div>
+</body>
+
+</html>
